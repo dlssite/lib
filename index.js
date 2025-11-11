@@ -3,6 +3,7 @@ import { config } from 'dotenv';
 import { readdirSync } from 'fs';
 import { join, dirname } from 'path';
 import { fileURLToPath, pathToFileURL } from 'url';
+import express from 'express';
 import connectDB from './database/connect.js';
 import logger from './utils/logger.js';
 
@@ -77,6 +78,18 @@ for (const file of eventFiles) {
 
 // Connect to database
 connectDB();
+
+// Start simple HTTP server for Render compatibility
+const app = express();
+const PORT = process.env.PORT || 3000;
+
+app.get('/', (req, res) => {
+  res.send('Arcanum Bot is running!');
+});
+
+app.listen(PORT, () => {
+  logger.info(`HTTP server listening on port ${PORT}`);
+});
 
 // Login
 client.login(process.env.BOT_TOKEN);
