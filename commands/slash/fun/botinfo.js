@@ -95,8 +95,8 @@ export async function execute(interaction) {
     .setTimestamp();
 
   const sourceCodeButton = new ButtonBuilder()
-    .setLabel('Source Code')
-    .setURL('https://github.com/Kmber')
+    .setLabel('Official Website')
+    .setURL('https://sanctyr.space')
     .setStyle(ButtonStyle.Link);
 
   const row = new ActionRowBuilder().addComponents(sourceCodeButton);
