@@ -75,6 +75,9 @@ export class AIClient {
   }
 
   async generateResponse(message, userId, context = '', userInfo = {}, guildId = null) {
+    const { username, nickname, serverName, isPatron, isQueen, userRoles, patronRoleId, queenRoleId } = userInfo;
+    const displayName = nickname && nickname !== username ? nickname : username;
+
     try {
       // Initialize models if not already done and we have a guild-specific API key
       if (!this.models && guildId) {
@@ -96,10 +99,6 @@ export class AIClient {
       if (!this.models) {
         throw new Error('AI models not initialized');
       }
-
-      const { username, nickname, serverName, isPatron, isQueen, userRoles, patronRoleId, queenRoleId } = userInfo;
-
-      const displayName = nickname && nickname !== username ? nickname : username;
       const systemPrompt = `You are Liber, a knowledgeable and enthusiastic librarian who is passionate about books, literature, manga, novels, webtoons and reading. You work in Arcanum city and helps people track their reading progress and discover new books.
 
 Your personality:
