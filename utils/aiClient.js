@@ -154,7 +154,34 @@ User message: ${message}`;
       return response;
     } catch (error) {
       logger.error('Error generating AI response:', error);
-      return "I'm sorry, I'm having trouble connecting to my knowledge base right now. Could you try asking me about books or reading later? 📚";
+
+      // Array of personalized error messages
+      const errorMessages = [
+        `Hey ${displayName}, I'm currently helping the Queen organize her royal library. Come back in 5 minutes, I might be done!`,
+        `Oh ${displayName}, the Eternal Queen needs my assistance with some ancient tomes right now. Check back in a few minutes!`,
+        `Sorry ${displayName}, I'm deep in conversation with a Patron about forbidden knowledge. Return in 5 minutes, perhaps?`,
+        `Hey ${displayName}, the Queen has summoned me for a literary emergency. I'll be free in a couple of minutes!`,
+        `Apologies ${displayName}, I'm assisting the Patron of Arcanum with cataloging rare manuscripts. Back soon!`,
+        `Oh ${displayName}, the Eternal Queen requires my expertise on legendary books. Come back in 5 minutes!`,
+        `Sorry ${displayName}, a Patron is consulting me about mystical literature. I'll be available shortly!`,
+        `Hey ${displayName}, I'm helping the Queen with her personal reading list. Check back in a few minutes!`,
+        `Apologies ${displayName}, the Patron of Arcanum needs my help with ancient scrolls. Return soon!`,
+        `Oh ${displayName}, the Eternal Queen is discussing epic sagas with me. I'll be free in 5 minutes!`,
+        `Sorry ${displayName}, I'm organizing the Queen's forbidden section. Come back later!`,
+        `Hey ${displayName}, a Patron is asking about legendary authors. Check back in a couple of minutes!`,
+        `Apologies ${displayName}, the Queen requires my assistance with royal decrees. Back soon!`,
+        `Oh ${displayName}, I'm helping the Patron catalog enchanted books. Return in 5 minutes!`,
+        `Sorry ${displayName}, the Eternal Queen needs my opinion on classic literature. I'll be available shortly!`,
+        `Hey ${displayName}, a Patron is consulting me about mythical tales. Come back in a few minutes!`,
+        `Apologies ${displayName}, I'm assisting the Queen with her library expansion. Check back soon!`,
+        `Oh ${displayName}, the Patron of Arcanum requires my expertise on ancient texts. Return in 5 minutes!`,
+        `Sorry ${displayName}, the Eternal Queen is sharing her favorite novels with me. I'll be free shortly!`,
+        `Hey ${displayName}, I'm helping a Patron with literary recommendations. Come back in a couple of minutes!`
+      ];
+
+      // Select a random message
+      const randomIndex = Math.floor(Math.random() * errorMessages.length);
+      return errorMessages[randomIndex];
     }
   }
 
